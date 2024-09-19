@@ -9,7 +9,7 @@ export class PokemonAndTypesService {
    * Obtiene los datos de un Pokémon según su ID (nombre o íd numerico).
    *
    * @param id - El ID del Pokémon a obtener.
-   * @returns Una promesa que se retorna con los detalles del Pokémon definido.
+   * @returns Una promesa que se retorna con los detalles del Pokémon definido.1
    */
   getManyTypes(id: number | string) {
     console.group(

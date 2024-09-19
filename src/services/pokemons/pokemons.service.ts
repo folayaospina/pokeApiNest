@@ -54,7 +54,6 @@ export class PokemonsService {
         .then((data) => {
             dataToSend.name = data.name;
             dataToSend.types = data.types;
-            dataToSend = data
             console.log('----------------------------------------------');
             console.groupEnd();
             return dataToSend;

@@ -1,85 +1,88 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# POKE API FELIPE OLAYA OSPINA
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## PokemonAndTypes Service
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This service is responsible for obtaining information about a specific Pokémon through the external PokeAPI.
 
-## Description
+### Method: getManyTypes
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This method receives a parameter `id` which can be a number or a string. This `id` is used to make a request to the external API and retrieve information about the corresponding Pokémon.
 
-## Project setup
+The method returns a promise that resolves with an object containing the name of the Pokémon and a list of its types.
 
-```bash
-$ npm install
+### Parameters
+
+- `id`: A number or a string representing the ID of the Pokémon to search for.
+
+### Return
+
+A promise that resolves with an object containing the following fields:
+
+- `name`: The name of the Pokémon.
+- `types`: A list of objects, each representing a Pokémon type. Each type object contains the following fields:
+  - `slot`: A number representing the position of the type in the Pokémon's type list.
+  - `type`: An object containing information about the type.
+  - `names`: A list of objects, each representing a name of the type in a specific language. Each name object contains the following fields:
+    - `language`: An object containing information about the language of the name.
+    - `name`: The name of the type in the specified language.
+
+### Usage Example
+
 ```
+localhost:3000/pokemonAndTypes?id=pikachu
+localhost:3000/pokemonAndTypes?id=1
+``` 
 
-## Compile and run the project
+- The first URL will log the information of the Pokémon Pikachu, including its type (in Japanese and Spanish).
+- The second URL will log the information of the Pokémon Bulbasaur, including its type (in Japanese and Spanish).
 
-```bash
-# development
-$ npm run start
+## Pokemons Service
 
-# watch mode
-$ npm run start:dev
+This service is responsible for obtaining information about Pokémon through the external PokeAPI.
 
-# production mode
-$ npm run start:prod
+### Method: getMany
+
+This method receives a parameter `quantity` which is a number. This number is used to make a request to the external API and obtain a list of Pokémon.
+
+### Parameters
+
+- `quantity`: A number representing the number of Pokémon to fetch.
+
+### Return
+
+A promise that resolves with an object containing the following fields:
+
+- `results`: A list of objects, each representing a Pokémon. Each Pokémon object contains the following fields:
+  - `name`: The name of the Pokémon.
+  - `url`: The URL of the external API where more information about the Pokémon can be obtained.
+
+### Usage Example
 ```
+localhost:3000/pokemons/many?limit=100
+``` 
+This URL will log the information of the first 100 Pokémon.
 
-## Run tests
+### Method: getOne
 
-```bash
-# unit tests
-$ npm run test
+This method receives a parameter `id` which can be a number or a string. This `id` is used to make a request to the external API and retrieve information about the corresponding Pokémon.
 
-# e2e tests
-$ npm run test:e2e
+### Parameters
 
-# test coverage
-$ npm run test:cov
+- `id`: A number or a string representing the ID of the Pokémon to search for.
+
+### Return
+
+A promise that resolves with an object containing the following fields:
+
+- `name`: The name of the Pokémon.
+- `types`: A list of objects, each representing a Pokémon type.
+
+### Usage Example
+
 ```
+localhost:3000/pokemons/one?id=pikachu
+localhost:3000/pokemons/one?id=1
+``` 
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- The first URL will log the information of the Pokémon Pikachu.
+- The second URL will log the information of the Pokémon Bulbasaur using its numeric ID.
