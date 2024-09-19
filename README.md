@@ -1,5 +1,13 @@
 # POKE API FELIPE OLAYA OSPINA
+## Used Tools
 
+- **NestJS**: A framework for building efficient, reliable, and scalable server-side applications in Node.js. It was used to structure the API and handle HTTP requests.
+
+- **Fetch**: A native JavaScript API for making HTTP requests. It was used to make requests to the EXTERNAL API.
+
+- **Vercel**: A cloud deployment platform for static applications and server functions. It was used to deploy the API in the cloud.
+
+- **Visual Studio Code**: A source code editor. It was used to write the API code.
 ## PokemonAndTypes Service
 
 This service is responsible for obtaining information about a specific Pokémon through the external PokeAPI.
@@ -85,4 +93,4 @@ localhost:3000/pokemons/one?id=1
 ``` 
 
 - The first URL will log the information of the Pokémon Pikachu.
-- The second URL will log the information of the Pokémon Bulbasaur using its numeric ID.
+- The second URL will log the information of the Pokémon Bulbasaur using its numeric ID.                                    
